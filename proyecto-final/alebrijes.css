@@ -1,0 +1,157 @@
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.btn-custom-1 {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  margin-right: 10px;  
+  border-radius: 20px;  
+}
+
+.btn-custom-2 {
+  background-color: black;
+  color: white;
+  border-radius: 20px;  
+}
+
+.btn-custom-3 {
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+}
+
+.btn-custom-4 {
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+    margin-top: 37px;
+}
+
+.my-section1 {
+    padding-top: 24px;
+    background-color:#016241;
+    padding-bottom: 35px;
+}
+
+.my-section2 {
+    margin-top: 32px;
+    display: flex;
+    background-color: #D40032;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.my-section3 {
+    margin-top: 32px;
+    margin-bottom: 34px;
+    display: flex;
+    background-color: #D40032;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.section-img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    transform: translateX(-2%);
+}
+
+.alebrije1 {
+    width: 50%;
+    padding-left: 20px;
+    margin-top: 24px;
+}
+
+.alebrije2 {
+    width: 50%;
+    padding-left: 20px;
+    margin-top: 24px;
+}
+
+.alebrije1 h1 {
+    color: white;
+    letter-spacing: 8px;
+    font-size: 50px;
+}
+
+.alebrije2 h1 {
+    color: white;
+    letter-spacing: 8px;
+    font-size: 50px;
+}
+
+.alebrije1 p {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 4px;
+}
+
+.alebrije2 p {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 8px;
+    margin-top: 37px;
+}
+
+.alebrije1 p:first-of-type {
+  margin-top: 37px; 
+}
+
+.alebrije2 h1:first-of-type {
+    margin-top: 37px;
+}
+
+.my-section1 h1  {
+    color: white;
+    letter-spacing: 8px;
+    font-size: 3.5rem;
+}
+
+.my-section3 h1 {
+    color: white;
+    letter-spacing: 8px;
+    font-size: 3.5rem;
+}
+
+p {
+    color: white;
+    font-size: 18px;
+}
+
+.link-underline-light {
+    color: white;
+}
+
+.footer {
+	border-top: 1px solid #ccc;
+}
+
+.images-container {
+    margin-top: 20px;
+}
+
+.social-network {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; 
+	gap: 10px; 
+}
+
+.social-network img {
+	margin-right: 10px; 
+}
+
+.instagram-icon {
+    width: 30px; 
+    height: 40px; 
+}
+
+
+
+.footer-p {
+    color: black;
+}

@@ -1,0 +1,121 @@
+.header {
+	border-bottom: 1px solid #ccc;
+}
+
+.navbar {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+
+	list-style: none;
+	margin: 0;
+	margin-right: 95px;
+}
+
+.navbar a {
+	text-decoration: none;
+	display: block;
+	padding: .5em;
+	color: black;
+	margin-right: 15px;
+}
+
+.title {
+	position: relative;
+}
+
+.image-container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.image {
+	width: 100%;
+	height: 220px;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
+.vector-image {
+	position: absolute;
+	top: 15%;
+	left: 10%;
+	z-index: 1;
+	width: 50px;
+	height: auto;
+}
+
+.image-title {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+}
+
+.image-title-1 {
+	top: 35%;
+	left: 24%;
+	font-size: 27px;
+}
+
+.image-title-2 {
+	top: 47%;
+	left: 22.8%;
+	font-size: 22px;
+	color: rgba(255, 255, 255, 0.706);
+}
+
+.image-title-3 {
+	top: 51%;
+	left: 32.4%;
+	font-size: 42px;
+}
+
+.image-title-4 {
+	top: 67%;
+	left: 32.9%;
+	font-size: 42px;
+}
+
+.image-title-5 {
+	top: 80%;
+	left: 30.6%;
+	font-size: 26px;
+	color: rgba(255, 255, 255, 0.706);
+}
+
+.image-container .image {
+	order: -1;
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+
+
+.information {
+  text-align: center;
+}
+
+.information h4 {
+	color: rgb(169, 128, 27);
+	font-size: 24px;
+	margin-top: 12px;
+	margin-bottom: 5px;
+}
+
+.information p {
+	margin-top: 0;
+}
+
+.information p.first-paragraph {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.information p.second-paragraph {
+	font-size: 18px;
+	margin-top: -10px;
+	color: rgba(121, 116, 116, 0.948);
+}
+

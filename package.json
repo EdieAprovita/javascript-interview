@@ -1,0 +1,16 @@
+{
+  "name": "javascript-interview",
+  "version": "1.0.0",
+  "main": "AgileTest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Edgar Chavero <edieveg316@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "typescript": "^4.7.4"
+  },
+  "description": ""
+}

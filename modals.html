@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="modal" id="ModalReferal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <asp:Label runat="server" ID="lblDetalleReferral"></asp:Label>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="valDetalleRevision" class="form-control d-none" />
+                    <div id="divBody"></div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ModalHistorico" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <asp:Label runat="server" ID="lblTituloModalHistorico"></asp:Label>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="divHistorico" class="modal-body pad20A">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="modal loading" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true"
+        style="top: 0 !important; padding-top: 17%">
+        <div class="modal-backdrop" style="position: fixed; height: 100%"></div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="col-md-12 col-xs-10 text-section pad50L">
+                        <div class="col-md-4">
+                            <div class="fa fa-circle-o-notch fa-2x fa-spin-custom loading-animation"></div>
+                        </div>
+                        <div class="col-md-6 loading-text">Cargando...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        style="top: 0 !important; padding-top: 15%">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <asp:Label runat="server" ID="lblTituloConfirmacion"></asp:Label>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="divConfirmacion" class="form-group form-group-sm col-md-12 mrg15T" style="text-align: center;">
+
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12 modal-footer" style="text-align: right;">
+                        <asp:Button runat="server" ID="btnConfAceptarAprobar" class="btn btn-success" />
+                        <asp:Button runat="server" ID="btnConfAceptarDeclinar" class="btn btn-success" />
+                        <asp:Button runat="server" ID="btnConfCancelar" class="btn btn-danger" data-dismiss="modal" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalEnviarCorreo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        style="top: 0 !important; padding-top: 15%">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">
+                        <asp:Label runat="server" ID="lblTituloModalEnviarCorreo"></asp:Label>
+                    </h4>
+                </div>
+                <div id="divMsEnviarCorreo" class="modal-body">
+                    <p>
+                        <asp:Label runat="server" ID="lblCorreosMsjDetalle"></asp:Label>
+                    </p>
+                    <div class="form-group row">
+                        <asp:Label runat="server" ID="lblCorreoPara" class="col-sm-1 col-form-label"></asp:Label>
+                        <div class="col-sm-10">
+                            <label id="valUsuarioProductor"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Label runat="server" ID="lblCorreoCC" class="col-sm-1 col-form-label"></asp:Label>
+                        <div class="col-sm-10">
+                            <input type="text" id="valEmailCC" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Label runat="server" ID="lblNotaSepararCorreos" class="col-sm-12 col-form-label">
+                        </asp:Label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12" style="text-align: right;">
+                        <asp:Button runat="server" ID="btnEnviarCorreo" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
