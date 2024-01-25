@@ -29,9 +29,9 @@ class Player {
 }
 
 // --- Initialisation of players ---
-let player1 = new Player('Joaquim', 'red');
-let player2 = new Player('Maxence', 'blue');
-let player3 = new Player('Mostafa', 'black');
+let player1 = new Player("Joaquim", "red");
+let player2 = new Player("Maxence", "blue");
+let player3 = new Player("Mostafa", "black");
 
 // --- Turn 1  ---
 player1.move();
@@ -83,3 +83,56 @@ console.log(`Area of s1: ${s1.calculateArea()}`);
 let s2 = new Square(4);
 console.log(`Perimeter of s2: ${s2.calculatePerimeter()}`);
 console.log(`Area of s2: ${s2.calculateArea()}`);
+
+//fetch DATA
+
+const fetchData = async () => {
+	const res = await fetch("https://api.github.com/users");
+	const data = await res.json();
+	console.log(data);
+};
+
+fetchData();
+
+useEffect(() => {
+	const fetchData2 = async () => {
+		const res = await fetch("https://api.github.com/users");
+		const data = await res.json();
+		setData(data);
+	};
+	fetchData2();
+}, []);
+
+const disputeRequest = [
+	{
+		id: 1,
+		name: "John Doe",
+		email: "XXXXXXXXXXXX",
+		phone: "XXXXXXXXXXXX",
+		address: "XXXXXXXXXXXX",
+	},
+];
+
+const getDisputeRequestJSON = disputeRequest => {
+	const disputeChange = JSON.parse([disputeRequest]);
+	return console.log(disputeChange, typeof disputeChange);
+};
+
+getDisputeRequestJSON(disputeRequest);
+
+const dispArray = getDisputeRequestJSON(disputeRequest);
+console.log(dispArray);
+
+const array = [
+	{
+		id: 1,
+		name: "John Doe",
+		email: "XXXXXXXXXXXX",
+		phone: "XXXXXXXXXXXX",
+		address: "XXXXXXXXXXXX",
+	},
+];
+
+const object = array[0];
+
+console.log(object);

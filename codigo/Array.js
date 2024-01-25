@@ -289,27 +289,6 @@ const lengthOfLongestSubstring = function (s) {
 	return longest;
 };
 
-const lengthOfLongestSubstring = s => {
-	let letters = s.split("");
-	let max = 0;
-	let result = new Map();
-	let start = 0;
-
-	for (let i = 0; i < letters.length; i++) {
-		if (!result.has(letters[i])) {
-			result.set(letters[i], i);
-		} else {
-			i = result.get(letters[i]);
-			result.clear();
-		}
-
-		if (max < result.size) {
-			max = result.size;
-		}
-	}
-	return max;
-};
-
 function find_max(nums) {
 	let max_num = Number.NEGATIVE_INFINITY; // smaller than all other numbers
 	for (let num of nums) {
@@ -335,3 +314,109 @@ const calPoints = function (ops) {
 	}
 	return stack.reduce((a, b) => a + b, 0);
 };
+
+function multiplyAndAdd(x, y, z) {
+	return (this.multiplier || 1) * (x * y + z);
+}
+
+const multiplier = {
+	multiplier: 4,
+};
+
+console.log(multiplyAndAdd.call(multiplier, 0, 1, 3));
+
+const foo = (a, b, c) => {
+	console.log(a, b, c);
+};
+
+const bar = ["hi", "hey", "hello"];
+
+console.log(foo(...bar));
+
+const arr = [
+	[1, 2],
+	[3, 4],
+	[5, 6],
+];
+
+for (const element of arr) {
+	for (let j = 0; j < element.length; j++) {
+		console.log(element[j]);
+	}
+}
+
+function findJudge(N, trust) {
+	const trustCount = new Array(N + 1).fill(0);
+	for (const [i, j] of trust) {
+		trustCount[i]--;
+		trustCount[j]++;
+	}
+	for (let i = 1; i <= N; i++) {
+		if (trustCount[i] === N - 1) return i;
+	}
+	return -1;
+}
+
+console.log(findJudge(2, [[1, 2]]));
+console.log(
+	findJudge(3, [
+		[1, 3],
+		[2, 3],
+	])
+);
+
+const validSubstrings = k => {
+	let count = 0;
+	let vowels = ["a", "e", "i", "o", "u"];
+	for (const element of k) {
+		if (vowels.includes(element)) {
+			count++;
+		}
+	}
+	return count;
+};
+
+function average(a, b) {
+	return (a + b) / 2;
+}
+
+console.log(average(2, 1));
+
+module.exports = {
+	average,
+};
+
+const crypto = require("crypto");
+
+function hash(data, callback) {
+	let counter = 0;
+	let result = [];
+
+	const next = () => {
+		if (counter < data.length) {
+			process.nextTick(() => {
+				const md5 = crypto.createHash("md5");
+				md5.update(data[counter]);
+				result.push(md5.digest("hex"));
+				counter += 1;
+				next();
+			});
+		} else {
+			callback(result);
+		}
+	};
+
+	next();
+}
+
+hash(["test", "another test", ""], hashes => {
+	console.log(hashes);
+	console.log("This should be printed after the hashes");
+});
+
+/* should print
+['098f6bcd4621d373cade4e832627b4f6', 
+ '5e8862cd73694287ff341e75c95e3c6a',
+ 'd41d8cd98f00b204e9800998ecf8427e'] */
+
+module.exports.hash = hash;

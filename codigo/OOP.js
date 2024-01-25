@@ -75,16 +75,66 @@
 // console.log(book5);
 
 const person = {
-	name: 'Juan',
+	name: "Juan",
 	age: 23,
-	profession: 'Developer',
-	education: 'Master',
+	profession: "Developer",
+	education: "Master",
 	address: {
-		street: 'Calle Luna',
-		number: '123',
-		city: 'Ciudad de Mexico',
-		country: 'Mexico',
+		street: "Calle Luna",
+		number: "123",
+		city: "Ciudad de Mexico",
+		country: "Mexico",
 	},
-}
+};
 
 console.log(Object.getOwnPropertyDescriptors(person));
+
+const names = "Edgar Castro";
+
+const alumno = {
+	names: "Alfredo Edgar",
+	lastNames: "Castro",
+	edad: 23,
+	father: {
+		names: "Edgar",
+		age: 60,
+	},
+
+	sayHello() {
+		console.log(
+			`Hello my name is ${alumno.names} ${alumno.lastNames} and I have ${alumno.edad}`
+		);
+	},
+};
+
+console.log(
+	alumno.sayHello(
+		`Hello my name is ${alumno.names} ${alumno.lastNames} and I have ${alumno.edad}`
+	)
+);
+
+const disputeRequest = [
+	{
+		carrierRequestSeq: "440",
+		requestType: "DISPUTE",
+		resourceType: "SHIPMENT",
+		resourceId: "22343",
+		resourceCode: "V",
+		Vendorbdip: "4545",
+		Notes: "Notes",
+		userType: "CARRIER",
+	},
+];
+
+console.log(typeof disputeRequest);
+
+const book = {
+	title: "The Catcher in the Rye",
+	author: "J.D Salinger",
+};
+
+const bookJSON = JSON.stringify(book);
+console.log(bookJSON);
+
+const parsedData = JSON.parse(bookJSON);
+console.log(parsedData);

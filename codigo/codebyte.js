@@ -23,7 +23,11 @@ const longestPalindrome = function (string) {
 	let longestPal = "";
 
 	const getLongestPalindrome = (leftPosition, rightPosition) => {
-		while (leftPosition >= 0 && rightPosition < string.length && string[leftPosition] === string[rightPosition]) {
+		while (
+			leftPosition >= 0 &&
+			rightPosition < string.length &&
+			string[leftPosition] === string[rightPosition]
+		) {
 			leftPosition--;
 			rightPosition++;
 		}
@@ -152,7 +156,8 @@ const reverseString = s => {
 console.log(reverseString("hello"));
 
 const findAndReplacePattern = (words, pattern) => {
-	let ans = [], codex = new Map();
+	let ans = [],
+		codex = new Map();
 
 	const translate = char => {
 		if (codex.has(char)) {
@@ -162,141 +167,140 @@ const findAndReplacePattern = (words, pattern) => {
 			codex.set(char, newChar);
 			return newChar;
 		}
-	}
+	};
 	const compare = word => {
-		let ans = [], codex = new Map()
-    const translate = char => {
-        if (!codex.has(char))
-            codex.set(char, String.fromCharCode(97 + codex.size))
-        return codex.get(char)
-    }
-    const compare = word => {
-        codex.clear()
-        for (let i = 0; i < word.length; i++)
-            if (translate(word[i]) !== cipher[i])
-                return
-        ans.push(word)
-    }
-    let cipher = new Array(pattern.length)
-    for (let i = 0; i < pattern.length; i++)
-        cipher[i] = translate(pattern.charAt(i))
-    words.forEach(compare)
-    return ans
-};
+		let ans = [],
+			codex = new Map();
+		const translate = char => {
+			if (!codex.has(char)) codex.set(char, String.fromCharCode(97 + codex.size));
+			return codex.get(char);
+		};
+		const compare = word => {
+			codex.clear();
+			for (let i = 0; i < word.length; i++)
+				if (translate(word[i]) !== cipher[i]) return;
+			ans.push(word);
+		};
+		let cipher = new Array(pattern.length);
+		for (let i = 0; i < pattern.length; i++) cipher[i] = translate(pattern.charAt(i));
+		words.forEach(compare);
+		return ans;
+	};
 
-console.log(findAndReplacePattern(["abc", "def", "ghi"], "abc"));
+	console.log(findAndReplacePattern(["abc", "def", "ghi"], "abc"));
 
-// const longestSubstring = s => {
-// 	let longest = 0;
-// 	let current = 0;
-// 	let map = new Map();
+	// const longestSubstring = s => {
+	// 	let longest = 0;
+	// 	let current = 0;
+	// 	let map = new Map();
 
-// 	for (let i = 0; i < s.length; i++) {
-// 		if (map.has(s[i])) {
-// 			current = Math.max(current, map.get(s[i]) + 1);
-// 		}
-// 		map.set(s[i], i);
-// 		longest = Math.max(longest, current);
-// 	}
+	// 	for (let i = 0; i < s.length; i++) {
+	// 		if (map.has(s[i])) {
+	// 			current = Math.max(current, map.get(s[i]) + 1);
+	// 		}
+	// 		map.set(s[i], i);
+	// 		longest = Math.max(longest, current);
+	// 	}
 
-// 	return longest;
-// }
+	// 	return longest;
+	// }
 
-const longestSubstring = s => {
-	let longest = [];
-			let current = [];
-	let map = new Map();
+	const longestSubstring = s => {
+		let longest = [];
+		let current = [];
+		let map = new Map();
 
-	for (let i = 0; i < s.length; i++) {
-		if (map.has(s[i])) {
-			current = current.slice(map.get(s[i]) + 1);
+		for (let i = 0; i < s.length; i++) {
+			if (map.has(s[i])) {
+				current = current.slice(map.get(s[i]) + 1);
+			}
+			current.push(s[i]);
+			map.set(s[i], i);
+			longest = Math.max(longest, current);
 		}
-		current.push(s[i]);
-		map.set(s[i], i);
-		longest = Math.max(longest, current);
-	}
 
-	return parseInt(longest.join(""));
-}
-console.log(longestSubstring("abcabcbb"));
+		return parseInt(longest.join(""));
+	};
+	console.log(longestSubstring("abcabcbb"));
 
-//write a function largetSubstring that takes a string and returns the length of the longest substring without repeating characters given an input string.
+	//write a function largetSubstring that takes a string and returns the length of the longest substring without repeating characters given an input string.
 
-function longestSubstring(s) {
-	let i
-	let n = s.length
+	function longestSubstring(s) {
+		let i;
+		let n = s.length;
 
-	let startString = 0
-	let end;
-	let max= 0
-	let maxlength = 0
-	let startIndex;
+		let startString = 0;
+		let end;
+		let max = 0;
+		let maxlength = 0;
+		let startIndex;
 
-	let map = new Map()
-	map.set(s[0], 0)
+		let map = new Map();
+		map.set(s[0], 0);
 
-	for (i = 1; i < n; i++) {
-		if (map.has(s[i])) {
-			startString = map.get(s[i]) + 1
+		for (i = 1; i < n; i++) {
+			if (map.has(s[i])) {
+				startString = map.get(s[i]) + 1;
+			}
+			map.set(s[i], i);
+			end = i;
+			if (end - startString > maxlength) {
+				maxlength = end - startString;
+				startIndex = startString;
+			}
 		}
-		map.set(s[i], i)
-		end = i
-		if (end - startString > maxlength) {
-			maxlength = end - startString
-			startIndex = startString
+		return s.substring(startIndex, startIndex + maxlength);
+	}
+
+	console.log(longestSubstring("abcabcbb"));
+
+	function getPerson() {
+		return;
+		{
+			name: "Test";
+			city: "Test";
 		}
 	}
-	return s.substring(startIndex, startIndex + maxlength)
-}
 
-console.log(longestSubstring("abcabcbb"));
+	console.log(getPerson());
 
-function getPerson(){
-	return 
-	{
-		name: "Test"
-		city: "Test"
-	}
-}
-
-console.log(getPerson());
-
-const palindromeNumber = n => {
-	let str = n.toString();
-	let reverse = str.split("").reverse().join("");
-	if (str === reverse) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-const isMatch = (s, p) => {
-	let i = 0;
-	let j = 0;
-	let star = -1;
-	let match = 0;
-	let starMatch = 0;
-	let sLength = s.length;
-	let pLength = p.length;
-	while (i < sLength) {
-		if (j < pLength && (s[i] === p[j] || p[j] === "?")) {
-			i++;
-			j++;
-		} else if (j < pLength && p[j] === "*") {
-			star = j;
-			starMatch = i;
-			j++;
-		} else if (star !== -1) {
-			j = star + 1;
-			i = starMatch + 1;
-			starMatch++;
+	const palindromeNumber = n => {
+		let str = n.toString();
+		let reverse = str.split("").reverse().join("");
+		if (str === reverse) {
+			return true;
 		} else {
 			return false;
 		}
-	}
-	while (j < pLength && p[j] === "*") {
-		j++;
-	}
-	return j === pLength;
-}
+	};
+
+	const isMatch = (s, p) => {
+		let i = 0;
+		let j = 0;
+		let star = -1;
+		let match = 0;
+		let starMatch = 0;
+		let sLength = s.length;
+		let pLength = p.length;
+		while (i < sLength) {
+			if (j < pLength && (s[i] === p[j] || p[j] === "?")) {
+				i++;
+				j++;
+			} else if (j < pLength && p[j] === "*") {
+				star = j;
+				starMatch = i;
+				j++;
+			} else if (star !== -1) {
+				j = star + 1;
+				i = starMatch + 1;
+				starMatch++;
+			} else {
+				return false;
+			}
+		}
+		while (j < pLength && p[j] === "*") {
+			j++;
+		}
+		return j === pLength;
+	};
+};

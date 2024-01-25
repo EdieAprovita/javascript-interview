@@ -288,3 +288,52 @@ rover.move([
 	"M",
 ]);
 console.log(rover.position); // {x: 9, y: 9, direction: 'E'}
+
+function reverseString(s: string[]): void {
+	let i = 0;
+	let j = s.length - 1;
+	while (i < j) {
+		[s[i], s[j]] = [s[j], s[i]];
+		i++;
+		j--;
+	}
+}
+
+function reverseString2(s: string[]): void {
+	let start = 0;
+	let end = s.length - 1;
+	while (start < end) {
+		// Log the status before swapping
+		console.log(`Before swap: ${s}`);
+		console.log(`Swapping ${s[start]} and ${s[end]}`);
+
+		// Swap characters
+		let temp = s[start];
+		console.log(`Temp is now ${temp}`);
+		s[start] = s[end];
+		console.log(`s[start] is now ${s[start]}`);
+		s[end] = temp;
+		console.log(`s[end] is now ${s[end]}`);
+
+		// Log the status after swapping
+		console.log(`After swap: ${s}`);
+
+		// Move towards the middle
+		start++;
+		console.log(`Start is now at index ${start}`);
+		end--;
+		console.log(`End is now at index ${end}`);
+
+		// Log the update of start and end pointers
+		console.log(`Start is now at index ${start}, End is now at index ${end}`);
+		console.log("---------------------------");
+	}
+}
+
+// Test the function
+let arr: string[] = ["h", "e", "l", "l", "o"];
+reverseString2(arr);
+
+const arr2: number[] = [1, 2, 3, 4, 5];
+const index = arr2.indexOf(3);
+console.log(index);

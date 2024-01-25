@@ -7,14 +7,14 @@ console.log(numberToString(123));
 //Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.//
 
 function XO(str) {
-	let arr = str.toLowerCase().split('');
+	let arr = str.toLowerCase().split("");
 	return (
-		arr.filter(char => char === 'x').length ===
-		arr.filter(char => char === 'o').length
+		arr.filter(char => char === "x").length ===
+		arr.filter(char => char === "o").length
 	);
 }
 
-console.log(XO('xo'));
+console.log(XO("xo"));
 
 function printerError(s) {
 	return `${s.match(/[^a-m]/g) ? s.match(/[^a-m]/g).length : 0}/${s.length}`;
@@ -38,14 +38,14 @@ console.log(findUniq([1, 1, 1, 2, 1, 1]));
 function duplicateEncode(word) {
 	return word
 		.toLowerCase()
-		.split('')
+		.split("")
 		.map(function (char, index, array) {
-			return array.indexOf(char) === array.lastIndexOf(char) ? '(' : ')';
+			return array.indexOf(char) === array.lastIndexOf(char) ? "(" : ")";
 		})
-		.join('');
+		.join("");
 }
 
-console.log(duplicateEncode('recede'));
+console.log(duplicateEncode("recede"));
 
 const uniqueInOrder = iterable => {
 	return [...iterable].filter((char, index, array) => {
@@ -53,7 +53,7 @@ const uniqueInOrder = iterable => {
 	});
 };
 
-console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+console.log(uniqueInOrder("AAAABBBCCDAABBB"));
 
 class SmallestIntegerFinder {
 	findSmallestInt(args) {
@@ -62,15 +62,15 @@ class SmallestIntegerFinder {
 }
 
 function longest(s1, s2) {
-	return [...new Set(s1 + s2)].sort().join('');
+	return [...new Set(s1 + s2)].sort((a, b) => a.localeCompare(b)).join("");
 }
 
 function squareDigits(num) {
 	return +num
 		.toString()
-		.split('')
+		.split("")
 		.map(x => x * x)
-		.join('');
+		.join("");
 }
 
 console.log(squareDigits(9119));
@@ -79,15 +79,15 @@ function isIsogram(str) {
 	return [...new Set(str.toLowerCase())].length === str.length;
 }
 
-console.log(isIsogram('Dermatoglyphics'));
+console.log(isIsogram("Dermatoglyphics"));
 
 function towerBuilder(nFloors) {
 	let tower = [];
 	for (let i = 0; i < nFloors; i++) {
 		tower.push(
-			' '.repeat(nFloors - i - 1) +
-				'*'.repeat(i * 2 + 1) +
-				' '.repeat(nFloors - i - 1)
+			" ".repeat(nFloors - i - 1) +
+				"*".repeat(i * 2 + 1) +
+				" ".repeat(nFloors - i - 1)
 		);
 	}
 	return tower;
@@ -110,12 +110,12 @@ function solution(A) {
 
 console.log(solution([1, 3, 6, 4, 1, 2]));
 
-const axios = require('axios');
+const axios = require("axios");
 
-require('./callMock');
+require("./callMock");
 
 const cityWeather = city => async () => {
-	if (!city) return console.error('string is empty');
+	if (!city) return console.error("string is empty");
 	const response = await axios.get(
 		`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}`
 	);
@@ -168,13 +168,13 @@ console.log(binaryArrayToNumber([0, 0, 1, 1]));
 
 function abbrevName(name) {
 	return name
-		.split(' ')
+		.split(" ")
 		.map(x => x[0])
-		.join('.')
+		.join(".")
 		.toUpperCase();
 }
 
-console.log(abbrevName('Sam Harris'));
+console.log(abbrevName("Sam Harris"));
 
 const reverseSeq = n => {
 	let newArr = [];
@@ -187,17 +187,17 @@ const reverseSeq = n => {
 console.log(reverseSeq(5));
 
 function boolToWord(bool) {
-	return bool ? 'Yes' : 'No';
+	return bool ? "Yes" : "No";
 }
 
 function highAndLow(numbers) {
-	let max = Math.max(...numbers.split(' ').map(x => parseInt(x)));
-	let min = Math.min(...numbers.split(' ').map(x => parseInt(x)));
+	let max = Math.max(...numbers.split(" ").map(x => parseInt(x)));
+	let min = Math.min(...numbers.split(" ").map(x => parseInt(x)));
 
 	return `${max} ${min}`;
 }
 
-console.log(highAndLow('4 5 29 54 4 0 -214 542 -64 1 -3 6 -6'));
+console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 
 function SeriesSum(n) {
 	let sum = 0;
@@ -220,18 +220,18 @@ const summation = number => {
 console.log(summation(8));
 
 function findNeedle(haystack) {
-	return `found the needle at position ${haystack.indexOf('needle')}`;
+	return `found the needle at position ${haystack.indexOf("needle")}`;
 }
 
 console.log(
-	findNeedle(['3', '123124234', null, 'needle', 'world', 'hay', 2, '3', true, false])
+	findNeedle(["3", "123124234", null, "needle", "world", "hay", 2, "3", true, false])
 );
 
 function disemvowel(str) {
-	return str.replace(/[aeiou]/gi, '');
+	return str.replace(/[aeiou]/gi, "");
 }
 
-console.log(disemvowel('This website is for losers LOL!'));
+console.log(disemvowel("This website is for losers LOL!"));
 
 const snail = arr => {
 	let finalArray = [];
@@ -252,8 +252,8 @@ console.log(
 );
 
 function validBraces(braces) {
-	while (braces != '') {
-		let next = braces.split('()').join('').split('[]').join('').split('{}').join('');
+	while (braces != "") {
+		let next = braces.split("()").join("").split("[]").join("").split("{}").join("");
 		if (next == braces) {
 			return false;
 		}
@@ -262,9 +262,9 @@ function validBraces(braces) {
 	return true;
 }
 
-console.log(validBraces('(){}[]'));
-console.log(validBraces('([{}])'));
-console.log(validBraces('(}'));
+console.log(validBraces("(){}[]"));
+console.log(validBraces("([{}])"));
+console.log(validBraces("(}"));
 
 function doubleInteger(i) {
 	return i * 2;
@@ -273,8 +273,8 @@ function doubleInteger(i) {
 console.log(doubleInteger(2));
 
 function isPangram(string) {
-	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-	let set = new Set(string.toLowerCase().split(''));
+	let alphabet = "abcdefghijklmnopqrstuvwxyz";
+	let set = new Set(string.toLowerCase().split(""));
 	for (let i = 0; i < alphabet.length; i++) {
 		if (!set.has(alphabet[i])) {
 			return false;
@@ -283,7 +283,7 @@ function isPangram(string) {
 	return true;
 }
 
-console.log(isPangram('The quick brown fox jumps over the lazy dog.'));
+console.log(isPangram("The quick brown fox jumps over the lazy dog."));
 
 function findNextSquare(sq) {
 	let root = Math.sqrt(sq);
@@ -296,15 +296,15 @@ function findNextSquare(sq) {
 console.log(findNextSquare(121));
 
 function accum(s) {
-	let arr = s.split('');
-	let final = '';
+	let arr = s.split("");
+	let final = "";
 	for (let i = 0; i < arr.length; i++) {
-		final += arr[i].toUpperCase() + arr[i].toLowerCase().repeat(i) + '-';
+		final += arr[i].toUpperCase() + arr[i].toLowerCase().repeat(i) + "-";
 	}
 	return final.slice(0, -1);
 }
 
-console.log(accum('abcd'));
+console.log(accum("abcd"));
 
 function bmi(weight, height) {
 	return weight / (height * height);
@@ -313,7 +313,7 @@ function bmi(weight, height) {
 console.log(bmi(80, 1.8));
 
 function filter_list(l) {
-	return l.filter(x => typeof x === 'number');
+	return l.filter(x => typeof x === "number");
 }
 
 function countSheeps(arrayOfSheep) {
@@ -335,17 +335,17 @@ function deleteNth(arr, n) {
 function DNAStrand(dna) {
 	let newArr = [];
 	for (let i = 0; i < dna.length; i++) {
-		if (dna[i] === 'A') {
-			newArr.push('T');
-		} else if (dna[i] === 'T') {
-			newArr.push('A');
-		} else if (dna[i] === 'C') {
-			newArr.push('G');
-		} else if (dna[i] === 'G') {
-			newArr.push('C');
+		if (dna[i] === "A") {
+			newArr.push("T");
+		} else if (dna[i] === "T") {
+			newArr.push("A");
+		} else if (dna[i] === "C") {
+			newArr.push("G");
+		} else if (dna[i] === "G") {
+			newArr.push("C");
 		}
 	}
-	return newArr.join('');
+	return newArr.join("");
 }
 
 function betterThanAverage(classPoints, yourPoints) {
@@ -361,7 +361,7 @@ function isTriangle(a, b, c) {
 }
 
 function oddOrEven(array) {
-	return array.reduce((a, b) => a + b, 0) % 2 == 0 ? 'even' : 'odd';
+	return array.reduce((a, b) => a + b, 0) % 2 == 0 ? "even" : "odd";
 }
 
 function zeroFuel(distanceToPump, mpg, fuelLeft) {
@@ -369,13 +369,13 @@ function zeroFuel(distanceToPump, mpg, fuelLeft) {
 }
 
 function rot13(message) {
-	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-	const newAlphabet = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	const newAlphabet = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	return message.replace(/[a-z]/gi, letter => newAlphabet[alphabet.indexOf(letter)]);
 }
 
-console.log(rot13('GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK.'));
+console.log(rot13("GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK."));
 
 function isSquare(n) {
 	return Math.sqrt(n) % 1 === 0;
@@ -385,10 +385,10 @@ const reverseArray = arr => arr.reverse();
 
 console.log(reverseArray);
 
-const students = ['Peter', 'Ahmad', 'Yana', 'Kalle', 'Olle', 'Maria', 'Max', 'Miia'];
+const students = ["Peter", "Ahmad", "Yana", "Kalle", "Olle", "Maria", "Max", "Miia"];
 
 const ironhackers = [].concat(students);
-students.push('Lina');
+students.push("Lina");
 
 console.log(students);
 console.log(ironhackers);
@@ -403,6 +403,4 @@ const cloneArray = arr => {
 
 function sumPairs(ints, s) {
 	return [0, 0] || undefined;
-
-	
 }

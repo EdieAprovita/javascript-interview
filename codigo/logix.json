@@ -1,9 +1,61 @@
 {
-    "Contexts": [
-        {
-            "ContextsName": "Default",
-            "ProcessingOrder": 0,
-            "BusinnessSections" : []
-        }
-    ]
+	"ShipmentData": [
+		{
+			"businessPartnerId": null,
+			"carrierMode": null,
+			"carrierScac": null,
+			"consignment": false,
+			"createdBy": null,
+			"createdDttm": null,
+			"designatedCarrierCode": "HJCS",
+			"directDistanceInMiles": null,
+			"emergency": false,
+			"freightDirection": null,
+			"hazmat": null,
+			"isCancelled": false,
+			"manualFloorLoad": null,
+			"outOfRouteDistanceInMiles": null,
+			"pickupStartDttm": "2018-05-25T04:01:00Z",
+			"quantity": 1,
+			"requestedMode": null,
+			"shipmentAttributes": [{}, {}, {}],
+			"shipmentId": 3245308,
+			"shipmentType": null,
+			"skuRemoved": null,
+			"source": null,
+			"sourceShipmentId": "000000000000000000000000000000000000000",
+			"status": "Available",
+			"stops": [{}, {}],
+			"trailerNumber": null,
+			"updatedBy": null,
+			"updatedDttm": null,
+			"volume": 3003,
+			"weight": 42003
+		},
+		{},
+		{},
+		{}
+	],
+	"DisputeData": [
+		{
+			"carrierBpid": "82094",
+			"carrierLdap": "456789",
+			"carrierRequestAttributes": [{}, {}],
+			"carrierRequestJson": "{\"requestType\":\"CARRIER_PICKUP_DATE_CHANGE\",\"resourceType\":\"SHIPMENT\",\"resourceId\":\"20222357\",\"pickupStartDateTime\":\"2024-02-30T19:00:00.000Z\",\"reasonCode\":\"C\",\"bpid\":\"82094\",\"fileName\":\"test.png\"}",
+			"carrierRequestSeq": 517,
+			"carrierRequestStatus": "failed",
+			"carrierRequestType": "CARRIER_PICKUP_DATE_CHANGE",
+			"createdBy": "456789",
+			"createdDttm": "2023-12-13T23:14:10.165Z",
+			"disputeRequestResponses": null,
+			"requestSupportingDocuments": [{}, {}],
+			"resourceId": "20222357",
+			"resourceType": "SHIPMENT",
+			"updatedBy": "axc8tjf",
+			"updatedDttm": "2023-12-13T23:29:14Z"
+		},
+		{},
+		{},
+		{}
+	]
 }
