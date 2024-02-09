@@ -203,3 +203,150 @@ function wave(str: string): string[] {
 export function solution(nums: number[]): number[] {
 	return nums ? nums.sort((a, b) => a - b) : [];
 }
+
+const plural = (n: number): boolean => {
+	return n !== 1;
+};
+
+console.log(plural(0));
+
+export function isValidWalk(walk: string[]): boolean {
+	if (walk.length !== 10) return false;
+
+	type directionValues = {
+		[key: string]: number;
+	};
+
+	const direction: directionValues = {
+		n: 0,
+		s: 0,
+		e: 0,
+		w: 0,
+	};
+
+	for (const dir of walk) {
+		direction[dir]++;
+	}
+	return direction.n === direction.s && direction.e === direction.w;
+}
+
+console.log(isValidWalk(["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"]));
+console.log(isValidWalk(["w", "e", "w", "e", "w", "e", "w", "e", "w", "e"]));
+
+export class Kata {
+	static getCount(str: string): number {
+		return str.split("").filter(char => "aeiou".includes(char)).length;
+	}
+}
+
+export function longestConsec(strarr: string[], k: number): string {
+	if (k <= 0 || k > strarr.length) return "";
+
+	let longest = "";
+
+	for (let i = 0; i < strarr.length; i++) {
+		const current = strarr.slice(i, i + k).join("");
+
+		if (current.length > longest.length) {
+			longest = current;
+		}
+	}
+
+	return longest;
+}
+
+export function remove(s: string): string {
+	if (s.endsWith("!")) {
+		return s.slice(0, -1);
+	}
+	return s;
+}
+
+console.log(remove("Hi!!"));
+
+export function peopleWithAgeDrink(n: number): {
+	[key: string]: string;
+} {
+	if (n < 14) return { teen: "drink toddy" };
+	if (n < 18) return { young: "drink coke" };
+	if (n < 21) return { teen: "drink beer" };
+	return { adult: "drink whisky" };
+}
+
+const numbers: number[] = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((a, b) => a + b, 0);
+console.log(sum);
+
+const maxOfTwoNumbers = (a: number, b: number): number => {
+	return Math.max(a, b);
+};
+
+console.log(maxOfTwoNumbers(3, 5));
+
+const words = [
+	"mystery",
+	"brother",
+	"aviator",
+	"crocodile",
+	"pearl",
+	"orchard",
+	"crackpot",
+];
+
+function findLongestWord(words: string[]): string | undefined {
+	if (words.length === 0) return undefined;
+
+	return words.reduce((longestWord, currentWord) => {
+		return currentWord.length > longestWord.length ? currentWord : longestWord;
+	});
+}
+
+console.log(findLongestWord(words));
+
+const num: number[] = [1, 2, 3, 4, 5];
+
+function sumArray(num: number[]): number {
+	return num.reduce((a, b) => a + b, 0);
+}
+
+console.log(sumArray(num));
+
+const avg: number[] = [1, 2, 33, 20, 5];
+function averageNumbers(avg: number[]): number {
+	return parseFloat((avg.reduce((a, b) => a + b, 0) / avg.length).toFixed(2));
+}
+
+console.log(averageNumbers(avg));
+
+const wordsArr: string[] = [
+	"seat",
+	"correspond",
+	"linen",
+	"motif",
+	"hole",
+	"smell",
+	"smart",
+	"chaos",
+	"fuel",
+	"palace",
+];
+
+function averageWordLength(wordsArr: string[]): number {
+	return parseFloat(
+		(wordsArr.reduce((a, b) => a + b.length, 0) / wordsArr.length).toFixed(2)
+	);
+}
+
+console.log(averageWordLength(wordsArr));
+
+const matriz: number[][] = [
+	[1, 2, 1, 24],
+	[8, 11, 9, 4],
+	[7, 0, 7, 27],
+	[7, 4, 28, 14],
+	[3, 10, 26, 7],
+];
+
+const element = matriz[1][1];
+console.log(element);

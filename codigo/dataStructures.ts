@@ -1,5 +1,3 @@
-import axios from "axios";
-
 interface StudentList {
 	n: number;
 	m: number;
@@ -18,47 +16,46 @@ interface Error {
 	message: string;
 }
 
-const canClassBeDivided = async () => {
-	try {
-		// Obtén la lista de estudiantes
-		const { data: studentList } = await axios.get<StudentList>(
-			"http://localhost/studentList"
-		);
-
-		const studentSurnames: { [key: string]: number } = {};
-
-		// Mapear sobre cada ID de estudiante y crear una lista de promesas
-		const studentPromises = studentList.ids.map(id =>
-			axios.get<Student | Error>(`http://localhost/student?student_id=${id}`)
-		);
-
-		// Resolver todas las promesas
-		const studentResults = await Promise.all(studentPromises);
-
-		for (const result of studentResults) {
-			const studentOrError = result.data;
-
-			if ("message" in studentOrError) {
-				console.log("Error retrieving student:", studentOrError.message);
-				continue;
-			}
-
-			const student = studentOrError as Student;
-
-			// If the surname already exists in the object, the class can't be divided
-			if (student.surname in studentSurnames) {
-				console.log("The class cannot be divided");
-				return;
-			} else {
-				// Add the surname to the object
-				studentSurnames[student.surname] = 1;
-			}
-		}
-
-		console.log("The class can be divided");
-	} catch (error) {
-		console.log("Error retrieving the student list:", error.message);
-	}
+const plural = (n: number): boolean => {
+	return n !== 1;
 };
 
-canClassBeDivided();
+export function tribonacci([a, b, c]: [number, number, number], n: number): number[] {
+	const result: number[] = [a, b, c];
+
+	for (let i = 3; i < n; i++) {
+		result.push(result[i - 1] + result[i - 2] + result[i - 3]);
+	}
+
+	return result;
+}
+
+export function number(busStops: [number, number][]): number {
+	return busStops.reduce((acc, [on, off]) => acc + on - off, 0);
+}
+
+console.log(
+	number([
+		[10, 0],
+		[3, 5],
+		[5, 8],
+	])
+);
+
+export function twoSum(numbers: number[], target: number): number[] {
+	const numMap: Map<number, number> = new Map();
+
+	let index = 0;
+	for (const num of numbers) {
+		const complement = target - num;
+
+		if (numMap.has(complement)) {
+			return [numMap.get(complement)!, index];
+		}
+		numMap.set(num, index);
+		index++;
+	}
+	return [];
+}
+
+console.log(twoSum([1, 2, 3], 4));
