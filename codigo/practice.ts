@@ -337,3 +337,18 @@ reverseString2(arr);
 const arr2: number[] = [1, 2, 3, 4, 5];
 const index = arr2.indexOf(3);
 console.log(index);
+
+interface User {
+	name: string;
+	age: number;
+	email: string;
+}
+
+const user: User[] = [{ name: "John", age: 30, email: "test@mail.com" }];
+
+function sum(a: number, b: number): number {
+	return a + b;
+}
+
+const num = sum(1, 2);
+console.log(num);
