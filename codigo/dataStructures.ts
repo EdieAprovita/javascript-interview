@@ -96,7 +96,6 @@ export const evenOrOdd = (n: number): string => {
 
 export const sumPairs = (ints: number[], s: number): [number, number] | void => {
 	const seen = new Set();
-	console.log("New set", seen);
 
 	for (const num of ints) {
 		if (seen.has(s - num)) {
@@ -108,3 +107,248 @@ export const sumPairs = (ints: number[], s: number): [number, number] | void => 
 };
 
 console.log(sumPairs([1, 4, 8, 7, 3, 15], 8));
+
+export const twoSums = (numbers: number[], target: number): number[] => {
+	let map = new Map<number, number>();
+
+	for (let i = 0; i < numbers.length; i++) {
+		if (map.has(target - numbers[i])) {
+			return [map.get(target - numbers[i])!, i];
+		}
+
+		map.set(numbers[i], i);
+	}
+	throw new Error("No two sum solution");
+};
+
+export const lengthOfLongestSubstring = (s: string): number => {
+	let map = new Map<string, number>();
+	let left = 0;
+	let max = 0;
+
+	for (let right = 0; right < s.length; right++) {
+		if (map.has(s[right])) {
+			left = Math.max(map.get(s[right])! + 1, left);
+		}
+		map.set(s[right], right);
+		max = Math.max(max, right - left + 1);
+	}
+	return max;
+};
+
+console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(lengthOfLongestSubstring("bbbbb"));
+
+export const findMedianSortedArrays = (nums1: number[], nums2: number[]): number => {
+	const mergedArray = nums1.concat(nums2).sort((a, b) => a - b);
+	const length = mergedArray.length;
+
+	if (length % 2 === 0) {
+		return (mergedArray[length / 2 - 1] + mergedArray[length / 2]) / 2;
+	} else {
+		return mergedArray[Math.floor(length / 2)];
+	}
+};
+
+export const longestPalindrome = function (string) {
+	let longestPal = "";
+
+	const getLongestPalindrome = (leftPosition, rightPosition) => {
+		while (
+			leftPosition >= 0 &&
+			rightPosition < string.length &&
+			string[leftPosition] === string[rightPosition]
+		) {
+			leftPosition--;
+			rightPosition++;
+		}
+
+		if (rightPosition - leftPosition > longestPal.length) {
+			longestPal = string.slice(leftPosition + 1, rightPosition);
+		}
+	};
+
+	for (let i = 0; i < string.length; i++) {
+		getLongestPalindrome(i, i + 1);
+
+		getLongestPalindrome(i, i);
+
+		if ((string.length - i) * 2 < longestPal.length) {
+			break;
+		}
+	}
+
+	return longestPal;
+};
+
+const mergedSortedArray = (
+	nums1: number[],
+	m: number,
+	nums2: number[],
+	n: number
+): void => {
+	let i = m - 1;
+	let j = n - 1;
+	let k = m + n - 1;
+
+	const log: Array<{ i: number; j: number; k: number; nums1: string; nums2: string }> =
+		[];
+
+	while (j >= 0) {
+		if (i >= 0 && nums1[i] > nums2[j]) {
+			nums1[k] = nums1[i];
+			i--;
+		} else {
+			nums1[k] = nums2[j];
+			j--;
+		}
+		log.push({
+			i: i,
+			j: j,
+			k: k,
+			nums1: nums1.toString(),
+			nums2: nums2.toString(),
+		});
+		k--;
+	}
+
+	console.table(log);
+};
+
+mergedSortedArray([1, 2, 3, 0, 0, 0, 0], 3, [2, 5, 6], 3);
+
+export const removeElement = (nums: number[], val: number): number => {
+	let k = 0;
+
+	for (const element of nums) {
+		if (element !== val) {
+			nums[k] = element;
+			k++;
+		}
+	}
+	return k;
+};
+
+export const removeDuplicates = (nums: number[]): number => {
+	let k: number = 1;
+
+	for (let i = 1; i < nums.length; i++) {
+		if (nums[i] !== nums[i - 1]) {
+			nums[k] = nums[i];
+			k++;
+		}
+	}
+	return k;
+};
+
+console.log(removeDuplicates([1, 1, 2, 6, 54, 6, 8, 3, 5, 2]));
+
+export const majorityElement = (nums: number[]): number => {
+	let count = 0;
+	let candidate = 0;
+
+	for (const num of nums) {
+		if (count === 0) {
+			candidate = num;
+		}
+		count += candidate === num ? 1 : -1;
+	}
+	return candidate;
+};
+
+export const longetsVowelSubsequence = (s: string): number => {
+	const vowels = "aeiou";
+	let max = 0;
+	let count = 0;
+
+	for (const char of s) {
+		if (vowels.includes(char)) {
+			count++;
+			max = Math.max(max, count);
+		} else {
+			count = 0;
+		}
+	}
+	return max;
+};
+
+export const removeDuplicates2 = (nums: number[]): number => {
+	if (nums.length === 0) return nums.length;
+
+	let insertPosition = 2;
+
+	for (let i = 2; i < nums.length; i++) {
+		if (nums[i] !== nums[insertPosition - 2]) {
+			nums[insertPosition] = nums[i];
+			insertPosition++;
+		}
+	}
+	return insertPosition;
+};
+
+export const maxProfit = (prices: number[]): number => {
+	let minPrice = Infinity;
+	let maxProfit = 0;
+
+	for (const price of prices) {
+		minPrice = Math.min(minPrice, price);
+		maxProfit = Math.max(maxProfit, price - minPrice);
+	}
+	return maxProfit;
+};
+
+const map = new Map<string, number>([
+	["a", 1],
+	["b", 2],
+	["c", 3],
+]);
+
+console.log(map.get("a"));
+
+function solution(A: number[]) {
+	let smallInteger = 1;
+
+	A.sort((a, b) => a - b);
+	console.table(A);
+
+	for (const num of A) {
+		if (num === smallInteger) {
+			smallInteger++;
+			console.table(smallInteger);
+		}
+	}
+	console.log("SmallInteger After Loop:", smallInteger);
+	return smallInteger;
+}
+
+console.log("Solution:", solution([1, 3, 6, 4, 1, 2]));
+
+export const canJump = (nums: number[]): boolean => {
+	let max = 0;
+
+	for (let i = 0; i < nums.length; i++) {
+		if (i > max) return false;
+		console.log("Max1:", max);
+		max = Math.max(max, i + nums[i]);
+		console.log("Max2:", max);
+	}
+	console.log("Max3:", max);
+	return true;
+};
+
+canJump([2, 3, 1, 1, 4]);
+
+function reverse(nums: number[], start: number, end: number) {
+	while (start < end) {
+		[nums[start], nums[end]] = [nums[end], nums[start]];
+		start++;
+		end--;
+	}
+}
+
+export const rotate = (nums: number[], k: number): void => {
+	k %= nums.length;
+	reverse(nums, 0, nums.length - 1);
+	reverse(nums, 0, k - 1);
+	reverse(nums, k, nums.length - 1);
+};
