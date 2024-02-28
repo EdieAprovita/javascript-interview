@@ -352,3 +352,39 @@ export const rotate = (nums: number[], k: number): void => {
 	reverse(nums, 0, k - 1);
 	reverse(nums, k, nums.length - 1);
 };
+
+export const grades: number[] = [85, 90, 95, 100, 44, 87, 56, 98, 100];
+
+const approvedGrades = grades.filter(grade => grade >= 70);
+
+const averagePassingGrade = (
+	approvedGrades.reduce((acc, grade) => acc + grade, 0) / approvedGrades.length
+).toFixed(2);
+
+console.log("Approved Grade:", approvedGrades, "Average Grades:", averagePassingGrade);
+
+interface Participant {
+	id: number;
+	name: string;
+	ticketNumber: number;
+}
+
+export const winningParticipants: Participant[] = [
+	{ id: 1, name: "John", ticketNumber: 12345 },
+	{ id: 2, name: "Martin", ticketNumber: 23456 },
+	{ id: 3, name: "Chris", ticketNumber: 34567 },
+	{ id: 4, name: "David", ticketNumber: 45678 },
+	{ id: 5, name: "Sophie", ticketNumber: 56789 },
+];
+
+export function findWinnerByName(name: string): Participant | undefined {
+	return winningParticipants.find(participant => participant.name === name);
+}
+
+export function findIndexByTicketNumber(ticketNumber: number): number {
+	return (
+		winningParticipants.findIndex(
+			participant => participant.ticketNumber === ticketNumber
+		) || -1
+	);
+}
