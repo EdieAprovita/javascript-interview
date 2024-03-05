@@ -388,3 +388,45 @@ export function findIndexByTicketNumber(ticketNumber: number): number {
 		) || -1
 	);
 }
+
+export function showWinnerInfo(name: string): string {
+	const winner = findWinnerByName(name);
+
+	if (winner) {
+		return `The winner is ${winner.name} with ticket number ${winner.ticketNumber}`;
+	} else {
+		return "No winner found";
+	}
+}
+
+console.log(showWinnerInfo("Martin"));
+
+interface Transactions {
+	id: number;
+	description: string;
+	amount: number;
+}
+
+const transactions: Transactions[] = [
+	{ id: 1, description: "Salary", amount: 1000 },
+	{ id: 2, description: "Rent", amount: -500 },
+	{ id: 3, description: "Food", amount: -200 },
+	{ id: 4, description: "Car", amount: -100 },
+	{ id: 5, description: "Bonus", amount: 500 },
+];
+
+export const totalBalance = transactions.reduce(
+	(acc, transaction) => acc + transaction.amount,
+	0
+);
+console.log("Total Balance:", totalBalance);
+
+export const largestTransaction = transactions.reduce((maxTransaction, transaction) => {
+	return maxTransaction.amount > transaction.amount ? maxTransaction : transaction;
+}, transactions[0]);
+console.log("Largest Transaction:", largestTransaction);
+
+export const purchaseTrasanctions = transactions.filter(
+	transaction => transaction.amount > 0
+);
+console.log("Purchase Transactions:", purchaseTrasanctions);
