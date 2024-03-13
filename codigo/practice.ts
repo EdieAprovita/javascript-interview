@@ -352,3 +352,41 @@ function sum(a: number, b: number): number {
 
 const num = sum(1, 2);
 console.log(num);
+
+let matrix = [
+	[1, 2, 3],
+	[4, 5, 6],
+	[7, 8, 9],
+];
+
+console.log(matrix[0][2]);
+
+for (const element of matrix) {
+	for (const value of element) {
+		console.log(value);
+	}
+}
+
+const competitions = [
+	["Javascript", "C#"],
+	["C#", "Python"],
+	["Python", "Javascript"],
+];
+
+const results = [0, 1, 1];
+
+function tournamentWinner(competitions: string[][], results: number[]): string {
+	const scores: { [key: string]: number } = {};
+	let maxScore = 0;
+	let winner = "";
+	for (let i = 0; i < competitions.length; i++) {
+		const [homeTeam, awayTeam] = competitions[i];
+		const winningTeam = results[i] === 0 ? awayTeam : homeTeam;
+		scores[winningTeam] = (scores[winningTeam] || 0) + 3;
+		if (scores[winningTeam] > maxScore) {
+			maxScore = scores[winningTeam];
+			winner = winningTeam;
+		}
+	}
+	return winner;
+}

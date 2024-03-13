@@ -430,3 +430,67 @@ export const purchaseTrasanctions = transactions.filter(
 	transaction => transaction.amount > 0
 );
 console.log("Purchase Transactions:", purchaseTrasanctions);
+
+export const fizzBuzz = () => {
+	for (let i = 1; i <= 100; i++) {
+		if (i % 3 === 0 && i % 5 === 0) {
+			console.log("FizzBuzz");
+		} else if (i % 3 === 0) {
+			console.log("Fizz");
+		} else if (i % 5 === 0) {
+			console.log("Buzz");
+		} else {
+			console.log(i);
+		}
+	}
+};
+
+console.log(fizzBuzz());
+
+export const anagram = (str1: string, str2: string): boolean => {
+	if (str1.length !== str2.length) return false;
+
+	const chartCount = {};
+
+	for (let char of str1) {
+		chartCount[char] = (chartCount[char] || 0) + 1;
+	}
+
+	for (let char of str2) {
+		if (!chartCount[char]) {
+			return false;
+		}
+		chartCount[char] -= 1;
+	}
+	return true;
+};
+
+export const poligonArea = (
+	type: string,
+	dimesion1: number,
+	dimesion2: number
+): number => {
+	let area = 0;
+
+	switch (type) {
+		case "square":
+			area = dimesion1 * dimesion1;
+			break;
+		case "rectangle":
+			area = dimesion1 * dimesion2;
+			break;
+		case "triangle":
+			area = (dimesion1 * dimesion2) / 2;
+			break;
+		case "circle":
+			area = Math.PI * dimesion1 * dimesion1;
+			break;
+		default:
+			break;
+	}
+	return parseFloat(area.toFixed(2));
+};
+
+console.log(poligonArea("circle", 5, 5));
+console.log(poligonArea("square", 5, 5));
+console.log(poligonArea("rectangle", 5, 5));

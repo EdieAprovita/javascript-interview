@@ -20,3 +20,31 @@ const randomCard = (): string => {
 };
 
 console.log(randomCard());
+
+interface Product {
+	name: string;
+	price: number;
+}
+
+class ConcreteProduct implements Product {
+	constructor(public name: string, public price: number) {}
+}
+
+abstract class Creator {
+	abstract factoryMethod(): Product;
+
+	createProduct(): Product {
+		return this.factoryMethod();
+	}
+}
+
+class ConcreteCreator extends Creator {
+	factoryMethod(): Product {
+		return new ConcreteProduct("Product", 100);
+	}
+}
+
+const creator = new ConcreteCreator();
+const product = creator.createProduct();
+
+console.log(product);

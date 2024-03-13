@@ -198,3 +198,32 @@ function findLongestWord(words: string[] | null): string {
 }
 
 console.log(findLongestWord(words));
+
+const user = {
+	name: "John",
+	id: 1,
+	books: [] as Book[],
+};
+
+type Book = {
+	title: string;
+	author: string;
+	isbn: string;
+	category: string;
+};
+
+const book1 = {
+	title: "The Catcher in the Rye",
+	author: "J.D. Salinger",
+	isbn: "0316769487",
+	category: "Fiction",
+};
+const book2 = {
+	title: "To Kill a Mockingbird",
+	author: "Harper Lee",
+	isbn: "0061120081",
+	category: "Fiction",
+};
+
+user.books.push(book1, book2);
+console.log(user);
