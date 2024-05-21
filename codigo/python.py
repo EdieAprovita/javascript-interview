@@ -1,6 +1,11 @@
-one = 1
-two = 2
-three = 3
+def sum():
+    a = 1
+    b = 2
+    return a + b
 
-print(one + two + three)
+
+def sub():
+    a = 1
+    b = 2
+    return a - b
 

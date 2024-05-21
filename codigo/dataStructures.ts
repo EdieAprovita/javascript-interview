@@ -445,7 +445,7 @@ export const fizzBuzz = () => {
 	}
 };
 
-console.log(fizzBuzz());
+fizzBuzz();
 
 export const anagram = (str1: string, str2: string): boolean => {
 	if (str1.length !== str2.length) return false;
@@ -494,3 +494,66 @@ export const poligonArea = (
 console.log(poligonArea("circle", 5, 5));
 console.log(poligonArea("square", 5, 5));
 console.log(poligonArea("rectangle", 5, 5));
+
+function jump(nums: number[]): number {
+	let steps = 0;
+	let max = 0;
+	let end = 0;
+
+	for (let i = 0; i < nums.length - 1; i++) {
+		max = Math.max(max, i + nums[i]);
+
+		if (i === end) {
+			steps++;
+			end = max;
+		}
+	}
+	return steps;
+}
+
+const print = (output: string) => {
+	console.log(output);
+};
+
+const isPerfectNumber = (n: number): string => {
+	let sum = 0;
+
+	for (let i = 1; i <= Math.sqrt(n); i++) {
+		if (n % i === 0) {
+			sum += i;
+			if (i !== 1 && i !== n / i) {
+				sum += n / i;
+			}
+		}
+	}
+
+	return sum === n ? "YES" : "NO";
+};
+
+const checkPerfectNumbers = (numbers: number[]): void => {
+	for (const n of numbers) {
+		print(isPerfectNumber(n));
+	}
+};
+
+const T = 3;
+const numbers = [6, 28, 496];
+checkPerfectNumbers(numbers);
+
+function maxMin(k: number, arr: number[]): number {
+	arr.sort((a, b) => a - b);
+	console.log(arr);
+
+	let min = Infinity;
+
+	for (let i = 0; i <= arr.length - k; i++) {
+		min = Math.min(min, arr[i + k - 1] - arr[i]);
+		console.table(min);
+	}
+
+	return min;
+}
+
+const k = 3;
+const arr = [100, 200, 300, 350, 400, 401, 402];
+console.log(maxMin(k, arr));

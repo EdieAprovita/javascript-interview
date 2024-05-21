@@ -404,3 +404,9 @@ const cloneArray = arr => {
 function sumPairs(ints, s) {
 	return [0, 0] || undefined;
 }
+
+var func = function func() {
+	console.log(func === func);
+};
+
+func();

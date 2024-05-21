@@ -1,12 +1,12 @@
 const solution = number => {
 	let newArr = [];
 
-	for (let i = 0; i < number; i++) {
+	for (let i = 1; i < number; i++) {
 		if (i % 3 === 0 || i % 5 === 0) {
 			newArr += i;
 		}
-		return newArr;
 	}
+	return newArr;
 };
 
 const findMedianSortedArrays = (nums1, nums2) => {

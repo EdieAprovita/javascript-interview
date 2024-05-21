@@ -227,3 +227,29 @@ const book2 = {
 
 user.books.push(book1, book2);
 console.log(user);
+
+const isPerfectNumber = (n: number): string => {
+	if (n <= 1) return "NO";
+
+	let sum = 0;
+
+	for (let i = 1; i <= n / 2; i++) {
+		if (n % i === 0) {
+			sum += i;
+		}
+	}
+
+	return sum === n ? "YES" : "NO";
+};
+
+const checkPerfectNumbers = (numbers: number[]): void => {
+	for (const n of numbers) {
+		console.log(isPerfectNumber(n));
+	}
+};
+
+const T = 3;
+const numbers = [5, 28, 496];
+checkPerfectNumbers(numbers);
+
+const minimumLength = (a: string[], b: string[], n: number): void => {};
