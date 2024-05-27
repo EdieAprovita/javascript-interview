@@ -511,6 +511,8 @@ function jump(nums: number[]): number {
 	return steps;
 }
 
+console.log(jump([2, 3, 1, 1, 4]));
+
 const print = (output: string) => {
 	console.log(output);
 };
@@ -557,3 +559,9 @@ function maxMin(k: number, arr: number[]): number {
 const k = 3;
 const arr = [100, 200, 300, 350, 400, 401, 402];
 console.log(maxMin(k, arr));
+
+export function gooseFilter(birds: string[]): string[] {
+	const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+
+	return birds.filter(bird => !geese.includes(bird));
+}

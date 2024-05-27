@@ -139,3 +139,41 @@ const fizzBuzzCustom = (numOne, numTwo, stringOne = "Fizz", stringTwo = "Buzz") 
 		}
 	}
 };
+
+function Remove(S) {
+	function isPrime(num) {
+		if (num <= 1) return false;
+		if (num <= 3) return true;
+		if (num % 2 === 0 || num % 3 === 0) return false;
+		for (let i = 5; i * i <= num; i += 6) {
+			if (num % i === 0 || num % (i + 2) === 0) return false;
+		}
+		return true;
+	}
+
+	const charCount = {};
+	for (const char of S) {
+		charCount[char] = (charCount[char] || 0) + 1;
+	}
+
+	const specialCharacters = new Set();
+	for (const char in charCount) {
+		if (isPrime(charCount[char])) {
+			specialCharacters.add(char);
+		}
+	}
+
+	let P = "";
+	for (const char of S) {
+		if (!specialCharacters.has(char)) {
+			P += char;
+		}
+	}
+
+	return P === "" ? "MARY" : P;
+}
+
+// Probar la función con un ejemplo
+const S = "aabbbbec";
+const result = Remove(S);
+console.log(result); // Debe imprimir "bbbb"
