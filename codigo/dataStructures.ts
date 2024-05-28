@@ -565,3 +565,37 @@ export function gooseFilter(birds: string[]): string[] {
 
 	return birds.filter(bird => !geese.includes(bird));
 }
+
+export function invert(array: number[]): number[] {
+	return array.map(num => -num);
+}
+
+export const groupAnagrams = (words: string[]): string[][] => {
+	const map = new Map<string, string[]>();
+	console.log(map);
+
+	for (const word of words) {
+		const sorted = word
+			.split("")
+			.sort((a, b) => a.localeCompare(b))
+			.join("");
+		console.log(sorted);
+		if (!map.has(sorted)) {
+			map.set(sorted, []);
+		}
+		map.get(sorted)?.push(word);
+		console.log(map);
+	}
+	return Array.from(map.values());
+};
+
+const words = ["eat", "tea", "tan", "ate", "nat", "bat"];
+console.log(groupAnagrams(words));
+
+export function angle(n: number): number {
+	return (n - 2) * 180;
+}
+
+export function multipleOfIndex(array: number[]): number[] {
+	return array.filter((num, index) => num % index === 0 && index !== 0);
+}
