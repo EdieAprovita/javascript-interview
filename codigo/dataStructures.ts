@@ -599,3 +599,73 @@ export function angle(n: number): number {
 export function multipleOfIndex(array: number[]): number[] {
 	return array.filter((num, index) => num % index === 0 && index !== 0);
 }
+
+export function reverseList(list: number[]): number[] {
+	return list.reverse();
+}
+
+const products = [
+	{ id: 1, name: "Product 1", price: 100, onSale: true },
+	{ id: 2, name: "Product 2", price: 200, onSale: false },
+	{ id: 3, name: "Product 3", price: 300, onSale: true },
+	{ id: 4, name: "Product 4", price: 400, onSale: false },
+	{ id: 5, name: "Product 5", price: 500, onSale: true },
+];
+
+const productNames = products.map(product => product.name);
+console.log(productNames);
+
+class Stack<T> {
+	private stack: T[] = [];
+
+	push(item: T): void {
+		this.stack.push(item);
+	}
+
+	pop(): T | undefined {
+		return this.stack.pop();
+	}
+
+	peek(): T | undefined {
+		return this.stack[this.stack.length - 1];
+	}
+
+	isEmpty(): boolean {
+		return this.stack.length === 0;
+	}
+}
+
+const stack = new Stack<number>();
+stack.push(1);
+stack.push(2);
+console.log(stack);
+console.log(stack.peek());
+console.log(stack);
+console.log(stack.pop());
+console.log(stack);
+console.log(stack.pop());
+console.log(stack);
+
+function isPalindrome(str: string): boolean {
+	const normalizedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+	return normalizedStr === normalizedStr.split("").reverse().join("");
+}
+
+console.log(isPalindrome("A man, a plan, a canal, Panama"));
+console.log(isPalindrome("hello"));
+
+export function twoSum2(nums: number[], target: number): number[] {
+	const map = new Map<number, number>();
+
+	for (let i = 0; i < nums.length; i++) {
+		const complement = target - nums[i];
+
+		if (map.has(complement)) {
+			return [map.get(complement)!, i];
+		}
+		map.set(nums[i], i);
+	}
+	return [];
+}
+
+console.log(twoSum2([2, 7, 11, 15], 9));
