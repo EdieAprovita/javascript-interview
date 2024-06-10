@@ -18,6 +18,9 @@ function sendToApi() {
 
 sendToApi();
 
+const newObj = bankAccount;
+delete newObj.isSelected;
+
 const customerRide = [
 	{
 		riderId: "XC1452",
@@ -33,6 +36,8 @@ customerRide[-1] = {
 	totalDistanceInKm: 14785,
 	dateOfTravel: new Date("03-02-2023"),
 };
+
+console.log(customerRide);
 
 customerRide[1] = {
 	riderId: "XC14518",
@@ -220,3 +225,20 @@ const customers = [
 ];
 
 console.log(deleteCustomerById(customers, "3"));
+
+const sensorReading = [1, 2, 3, [null, 5, [4, 10], 89, "20", [[[["96"]]]]]];
+
+function convert() {
+	const flatArray = sensorReading.flat(3);
+	const mapped = flatArray.map(temperature => {
+		if (!isNaN(temperature)) {
+			return temperature * 2;
+		}
+		return temperature;
+	});
+	console.log(mapped);
+}
+
+convert();
+
+console.log(["1", "5", "1"].map(parseInt));

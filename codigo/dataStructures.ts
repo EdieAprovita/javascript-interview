@@ -669,3 +669,53 @@ export function twoSum2(nums: number[], target: number): number[] {
 }
 
 console.log(twoSum2([2, 7, 11, 15], 9));
+
+const oldObject = {
+	contact: {
+		email: "hola@mail.com",
+	},
+};
+
+const newObj = {
+	...oldObject,
+};
+
+console.log(newObj.contact.email);
+
+newObj.contact.email = "hola2@gmail.com";
+
+console.log(oldObject.contact.email);
+console.log(newObj.contact.email);
+
+export function hIndex(citations: number[]): number {
+	citations.sort((a, b) => a - b);
+
+	let hIndex = 0;
+
+	for (let i = 0; i < citations.length; i++) {
+		const h = Math.min(citations[i], citations.length - i);
+		hIndex = Math.max(hIndex, h);
+	}
+	return hIndex;
+}
+
+const productExceptSelf = (nums: number[]): number[] => {
+	const result: number[] = [];
+	let product = 1;
+
+	for (let i = 0; i < nums.length; i++) {
+		result[i] = product;
+		product *= nums[i];
+	}
+
+	product = 1;
+
+	for (let i = nums.length - 1; i >= 0; i--) {
+		result[i] *= product;
+		product *= nums[i];
+	}
+
+	return result;
+};
+
+console.log(productExceptSelf([1, 2, 3, 4]));

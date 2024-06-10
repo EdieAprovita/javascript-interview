@@ -390,3 +390,36 @@ function tournamentWinner(competitions: string[][], results: number[]): string {
 	}
 	return winner;
 }
+
+const map = new Map();
+
+map.set("name", "John");
+map.set("age", 30);
+map.set("isStudent", true);
+
+console.log(map);
+
+export function maxProfit(prices: number[]): number {
+	let maxValue = 0;
+
+	for (let i = 0; i < prices.length; i++) {
+		if (prices[i] > prices[i - 1]) {
+			maxValue += prices[i] - prices[i - 1];
+		}
+	}
+	return maxValue;
+}
+
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+const users = [
+	{ user: "John", isActive: true, hasCat: false },
+	{ user: "Jane", isActive: true, hasCat: true },
+	{ user: "Alan", isActive: false, hasCat: false },
+];
+
+function activeUsers(users: { user: string; isActive: boolean; hasCat: boolean }[]) {
+	return users.filter(user => user.isActive && user.hasCat);
+}
+
+console.log(activeUsers(users));
