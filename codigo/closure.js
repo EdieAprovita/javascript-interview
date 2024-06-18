@@ -1,4 +1,4 @@
-nameOfDog('Elmo');
+nameOfDog("Elmo");
 
 function nameOfDog(name) {
 	console.log(name);
@@ -81,18 +81,16 @@ const intersect2 = (nums1, nums2) => {
 };
 
 //regex white space
-const formName = 'QA_TestForm';
+const formName = "QA_TestForm";
 
-const auxstr = formName.replace(/\s+/g, '');
+const auxstr = formName.replace(/\s+/g, "");
 
 console.log(auxstr);
 
-
-
 let persona = {
-	firstName: 'John',
-	lastName: 'Doe',
-}
+	firstName: "John",
+	lastName: "Doe",
+};
 
 let { firstName, lastName } = persona;
 console.log(firstName);
@@ -113,27 +111,26 @@ class User {
 	#getSalary() {
 		console.log("Salary is 1000");
 	}
-
 }
 
 let user = new User();
-console.log(user)
+console.log(user);
 
 function display() {
 	var i = 1;
 	return function () {
 		i++;
 		console.log(i);
-	}
+	};
 }
 
 var getVal = display();
 getVal();
 
-var array = [0, 1]
-array[1] = 2
+var array = [0, 1];
+array[1] = 2;
 
-console.log(array.length)
+console.log(array.length);
 
 function show(...args) {
 	let sum = 0;
@@ -170,7 +167,7 @@ class Manager extends Person() {
 let m1 = new Manager("John", "IT");
 m1.print();
 
-console.log(false == ((0 === "0") == 0))
+console.log(false == ((0 === "0") == 0));
 
 function display() {
 	var i = 1;
@@ -178,7 +175,7 @@ function display() {
 	return function () {
 		console.log(i);
 		i++;
-	}
+	};
 }
 
 display();
@@ -186,13 +183,13 @@ console.log(i);
 
 (function (a) {
 	console.log(a);
-})
+});
 
 function Employee() {
-	this.role = r
+	this.role = r;
 	this.getRole = function () {
 		console.log(this.role);
-	}
+	};
 	return 0;
 }
 
@@ -203,21 +200,21 @@ function message() {
 	console.log("Hello World");
 }
 
-message(1, 2)
+message(1, 2);
 
 function message(a, b) {
 	console.log("message2");
 }
 
-function message(a, b,c) {
+function message(a, b, c) {
 	console.log("message3");
 }
 
 function display() {
-	console.log(arguments[2])
+	console.log(arguments[2]);
 }
 
-display(1, 2, 3)
+display(1, 2, 3);
 
 document.getElementsByTagName("button")[0].firstChild.nodeValue = "Click Me";
 
@@ -228,7 +225,7 @@ function display() {
 display(1);
 
 function findScope(a) {
-	b = a
+	b = a;
 }
 
 findScope();
@@ -249,27 +246,25 @@ class User {
 	#getSalary() {
 		console.log("Salary is 1000");
 	}
-
 }
 
 function justResolve(result) {
-	console.log("Promise result")
+	console.log("Promise result");
 }
 
 function justReject(result) {
-	console.log(result)
+	console.log(result);
 }
 
-Promise.resolve(new Error("Exception"))
-	.then(justResolve, justReject);
+Promise.resolve(new Error("Exception")).then(justResolve, justReject);
 
-const obj = { foo: 1 }
+const obj = { foo: 1 };
 
 obj.bar = 2;
 
 console.log(obj.bar);
 
-function add(a = 10, b = 5) { 
+function add(a = 10, b = 5) {
 	return a + b;
 }
 
@@ -277,7 +272,7 @@ console.log(add(3));
 
 (function (a) {
 	console.log(a);
-})()
+})();
 
 let x = 5;
 
@@ -290,24 +285,23 @@ if (true) {
 console.log(x);
 
 var json1 = {
-
-	"members": { "role": "admin" }
-}
+	members: { role: "admin" },
+};
 
 console.log(json1.members.role);
 
-var a = null
-var a = ""
-var a = 1
+var a = null;
+var a = "";
+var a = 1;
 console.log(a);
 
-console.log(false == ((0 === "0") == 0))
+console.log(false == ((0 === "0") == 0));
 
 function message(a) {
 	console.log("message");
 }
 
-message(1, 2)
+message(1, 2);
 
 function message(a, b) {
 	console.log("message2");
@@ -317,4 +311,16 @@ function message(a, b, c) {
 	console.log("message3");
 }
 
-console.log(message())
+console.log(message());
+
+for (let i = 0; i < 5; i++) {
+	setTimeout(function () {
+		console.log(i);
+	}, 1000);
+}
+
+console.log(aa, xx, zz);
+
+var aa = 10;
+let xx = 5;
+const zz = 10;

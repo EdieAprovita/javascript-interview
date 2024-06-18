@@ -719,3 +719,71 @@ const productExceptSelf = (nums: number[]): number[] => {
 };
 
 console.log(productExceptSelf([1, 2, 3, 4]));
+
+function minPathSum(grid: number[][]): number {
+	const m: number = grid.length;
+	const n: number = grid[0].length;
+
+	// Initialize a 2D array for storing the minimum path sums
+	const dp: number[][] = Array(m)
+		.fill(0)
+		.map(() => Array(n).fill(0));
+
+	dp[0][0] = grid[0][0];
+	console.log(dp, m, n, "Initial grid");
+
+	// Fill the first row
+	for (let j = 1; j < n; j++) {
+		dp[0][j] = dp[0][j - 1] + grid[0][j];
+	}
+	console.table(dp, ["First Row"]);
+
+	// Fill the first column
+	for (let i = 1; i < m; i++) {
+		dp[i][0] = dp[i - 1][0] + grid[i][0];
+	}
+	console.table(dp, ["First Column"]);
+
+	// Fill the rest of the dp array
+	for (let i = 1; i < m; i++) {
+		for (let j = 1; j < n; j++) {
+			dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+		}
+	}
+	console.table(dp, ["Rest of the DP Array"]);
+
+	// The bottom-right corner contains the minimum path sum
+	return dp[m - 1][n - 1];
+}
+
+// Example 1
+const grid1: number[][] = [
+	[1, 3, 1],
+	[1, 5, 1],
+	[4, 2, 1],
+];
+console.log(minPathSum(grid1)); // Output: 7
+
+// Example 2
+const grid2: number[][] = [
+	[1, 2, 3],
+	[4, 5, 6],
+];
+console.log(minPathSum(grid2)); // Output: 12
+
+console.log(
+	minPathSum([
+		[1, 3, 1],
+		[1, 5, 1],
+		[4, 2, 1],
+	])
+);
+
+type InferAsTuple = [unknown, ...unknown[]];
+
+const options = [
+	{ label: "View", value: "VIEW" },
+	{ label: "Full access", value: "FULL_ACCESS" },
+] satisfies InferAsTuple;
+
+console.log(options[2]);
