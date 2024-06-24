@@ -778,3 +778,130 @@ console.log(
 		[4, 2, 1],
 	])
 );
+
+const fetchData = () => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			const data = { user: "Jane Doe", age: 25 };
+			resolve(data);
+			reject("Error fetching data");
+		}, 2000);
+	});
+};
+
+const getData = async () => {
+	try {
+		const data = await fetchData();
+		console.log("Data fetched:", data);
+	} catch (error) {
+		console.error("Error:", error);
+	}
+};
+
+getData();
+
+const books = [
+	{
+		title: "The Power of Habit",
+		author: "Charles Duhigg",
+	},
+	{
+		title: "Atomic Habits",
+		author: "James Clear",
+	},
+	{
+		title: "The Lean Startup",
+		author: "Eric Ries",
+	},
+];
+
+const bookArray = books.map(book => [book.title, book.author]);
+
+console.log(bookArray);
+
+function canCompleteCircuit(gas: number[], cost: number[]): number {
+	let total = 0;
+	let current = 0;
+	let start = 0;
+
+	for (let i = 0; i < gas.length; i++) {
+		total += gas[i] - cost[i];
+		current += gas[i] - cost[i];
+
+		if (current < 0) {
+			start = i + 1;
+			current = 0;
+		}
+	}
+
+	return total >= 0 ? start : -1;
+}
+
+console.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]));
+
+class RandomizedSet {
+	private data: number[];
+	private valToIndex: Map<number, number>;
+
+	constructor() {
+		this.data = [];
+		this.valToIndex = new Map();
+	}
+
+	insert(val: number): boolean {
+		if (this.valToIndex.has(val)) {
+			return false;
+		}
+		this.data.push(val);
+		this.valToIndex.set(val, this.data.length - 1);
+		return true;
+	}
+
+	remove(val: number): boolean {
+		if (!this.valToIndex.has(val)) {
+			return false;
+		}
+		const index = this.valToIndex.get(val)!;
+		const lastElement = this.data[this.data.length - 1];
+		this.data[index] = lastElement;
+		this.valToIndex.set(lastElement, index);
+		this.data.pop();
+		this.valToIndex.delete(val);
+		return true;
+	}
+
+	getRandom(): number {
+		const randomIndex = Math.floor(Math.random() * this.data.length);
+		return this.data[randomIndex];
+	}
+}
+
+const set = new RandomizedSet();
+
+function candy(ratings: number[]): number {
+	const n = ratings.length;
+	const left = Array(n).fill(1);
+	const right = Array(n).fill(1);
+
+	for (let i = 1; i < n; i++) {
+		if (ratings[i] > ratings[i - 1]) {
+			left[i] = left[i - 1] + 1;
+		}
+	}
+
+	for (let i = n - 2; i >= 0; i--) {
+		if (ratings[i] > ratings[i + 1]) {
+			right[i] = right[i + 1] + 1;
+		}
+	}
+
+	let result = 0;
+
+	for (let i = 0; i < n; i++) {
+		result += Math.max(left[i], right[i]);
+	}
+
+	return result;
+}
+
+console.log(candy([1, 0, 2]));

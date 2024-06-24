@@ -324,3 +324,16 @@ console.log(aa, xx, zz);
 var aa = 10;
 let xx = 5;
 const zz = 10;
+
+const name = "John";
+console.log(Boolean(name));
+
+const price = 10;
+console.log(Boolean(price));
+
+let isTrue = true;
+console.log(Boolean(isTrue));
+
+console.log(Boolean(1));
+console.log(Boolean(0));
+console.log(Boolean(-1));
