@@ -1,0 +1,66 @@
+/* Import the Heebo font */
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap");
+
+/* CSS variables */
+:root {
+  --primary: black;
+  --secondary: white;
+  --transition-duration: 0.5s;
+}
+
+/* General styles */
+html {
+  background-color: var(--secondary);
+  color: var(--primary);
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+body {
+  font-family: "Heebo", sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle {
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hand {
+  position: absolute;
+  width: 50%;
+  height: 6px;
+  background: var(--primary);
+  transform-origin: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.center-point {
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* Dark mode styles */
+html.dark {
+  --primary: white;
+  --secondary: black;
+}
