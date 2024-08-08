@@ -935,3 +935,57 @@ function trap(height: number[]): number {
 }
 
 console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+
+interface Person {
+	name: string;
+	age: number;
+	skills: string[];
+}
+
+const introduce = (person: Person): string => {
+	return `Hello, my name is ${person.name}, I am ${
+		person.age
+	} years old and I know ${person.skills.join(", ")}`;
+};
+
+const person: Person = {
+	name: "John",
+	age: 25,
+	skills: ["JavaScript", "TypeScript", "React"],
+};
+
+console.log(introduce(person));
+
+class Animal {
+	constructor(public name: string, public ability: string[], public sound: string) {
+		this.name = name;
+		this.ability = ability;
+		this.sound = sound;
+	}
+
+	introduce(): string {
+		return `Hello, I am ${this.name} and I can ${this.ability.join(
+			", "
+		)} and I sound like ${this.sound}`;
+	}
+
+	makeSound(): string {
+		return `${this.name} makes a sound when it ${this.ability.join(", ")}`;
+	}
+}
+
+class Dog extends Animal {
+	constructor(name: string, ability: string[], sound: string, breed: string) {
+		super(name, ability, sound);
+	}
+
+	bark(): string {
+		return `${this.name} barks`;
+	}
+}
+
+const dog1 = new Dog("Dog", ["bark", "run", "jump"], "woof", "Labrador");
+console.log(dog1.introduce());
+
+const dog = new Animal("Dog", ["bark", "run", "jump"], "woof");
+console.log(dog.introduce());

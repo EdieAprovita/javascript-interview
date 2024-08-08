@@ -355,3 +355,13 @@ var result = (function () {
 
 console.log(name);
 console.log(result);
+
+let x2;
+
+let obj2 = { a: "b", b: "a", c: "b" };
+
+for (let key in obj2) {
+	x = obj2[obj2[key]];
+}
+
+console.log(x);
